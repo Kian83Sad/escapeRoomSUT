@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>7 خوان رستم</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;500;700&family=Space+Grotesk:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <header class="hero">
+      <aside class="abjad-box">
+        <div class="abjad-title">جدول ابجد</div>
+        <img src="Images/image2.png" alt="جدول ابجد" loading="lazy">
+      </aside>
+      <div class="eyebrow">اتاق فرار دیجیتال</div>
+      <h1>هفت خوان</h1>
+      <p>برای فرار، باید هر ۷ معما را به‌ترتیب باز کنی. بعد از هر پاسخ درست، کارت بعدی فعال می‌شود. حروف فارسی را دقیق وارد کن و ترتیب را فراموش نکن.</p>
+      <div class="hero-actions">
+        <button id="restart" class="ghost">شروع دوباره</button>
+        <span class="hint-chip">راهنما: بدون فاصله اضافه جواب بده</span>
+      </div>
+    </header>
+
+    <section class="progress">
+      <div class="line"></div>
+      <div class="dots">
+        <div class="dot active" data-step="1">۱</div>
+        <div class="dot" data-step="2">۲</div>
+        <div class="dot" data-step="3">۳</div>
+        <div class="dot" data-step="4">۴</div>
+        <div class="dot" data-step="5">۵</div>
+        <div class="dot" data-step="6">۶</div>
+        <div class="dot" data-step="7">۷</div>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="card puzzle active" data-step="1">
+        <div class="badge">مرحله ۱</div>
+        <h3>نبرد رخش با شیر</h3>
+        <label class="input-row">
+          <span>جواب</span>
+          <input type="text" id="step1" placeholder="" autocomplete="off">
+        </label>
+        <button class="primary check-btn">باز کردن قفل</button>
+        <p class="status"></p>
+      </article>
+
+      <article class="card puzzle" data-step="2">
+        <div class="badge">مرحله ۲</div>
+        <h3>گذر از بیابان سخت</h3>
+        <label class="input-row">
+          <span>جواب</span>
+          <input type="text" id="step2" placeholder="نام را بنویس" autocomplete="off">
+        </label>
+        <button class="primary check-btn">باز کردن قفل</button>
+        <p class="status"></p>
+      </article>
+
+      <article class="card puzzle" data-step="3">
+        <div class="badge">مرحله ۳</div>
+        <h3>نبرد با اژدها</h3>
+        <p>سه چرخه رنگ را به ترتیب درست لمس کن. اگر اشتباه شد، پاک کن و دوباره بچین.</p>
+        <div class="color-pad">
+          <button class="color-swatch" data-color="سبز" aria-label="سبز"></button>
+          <button class="color-swatch" data-color="آبی" aria-label="آبی"></button>
+          <button class="color-swatch" data-color="بنفش" aria-label="بنفش"></button>
+          <button class="color-swatch" data-color="قرمز" aria-label="قرمز"></button>
+          <button class="color-swatch" data-color="زرد" aria-label="زرد"></button>
+        </div>
+        <div class="selection">
+          <span>ترتیب انتخابی:</span>
+          <div class="trail" id="colorTrail"></div>
+          <button class="ghost small" id="clearColors">پاک کردن</button>
+        </div>
+        <button class="primary check-btn">تایید ترتیب</button>
+        <p class="status"></p>
+      </article>
+
+      <article class="card puzzle" data-step="4">
+        <div class="badge">مرحله ۴</div>
+        <h3>کشتن جادوگر</h3>
+        <label class="input-row">
+          <span>جواب</span>
+          <input type="text" id="step4" placeholder="" autocomplete="off">
+        </label>
+        <button class="primary check-btn">باز کردن قفل</button>
+        <p class="status"></p>
+      </article>
+
+      <article class="card puzzle" data-step="5">
+        <div class="badge">مرحله ۵</div>
+        <h3>جنگ با اولاد مرزبان</h3>
+        <p>کد را چهار رقمی وارد کن. بدون فاصله یا خط تیره.</p>
+        <label class="input-row">
+          <span>کد</span>
+          <input type="tel" pattern="[0-9]*" inputmode="numeric" maxlength="4" id="step5" placeholder="----">
+        </label>
+        <button class="primary check-btn">باز کردن قفل</button>
+        <p class="status"></p>
+      </article>
+
+      <article class="card puzzle" data-step="6">
+        <div class="badge">مرحله ۶</div>
+        <h3>جنگ با ارژنگ دیو</h3>
+        <p>پاسخ فعلی: «اولاد».</p>
+        <label class="input-row">
+          <span>جواب</span>
+          <input type="text" id="step6" placeholder="اولاد" autocomplete="off">
+        </label>
+        <button class="primary check-btn">باز کردن قفل</button>
+        <p class="status"></p>
+      </article>
+
+      <article class="card puzzle" data-step="7">
+        <div class="badge">مرحله ۷</div>
+        <h3>دیو سپید</h3>
+        <p>سه رقمی آخر را وارد کن تا در باز شود.</p>
+        <label class="input-row">
+          <span>کد</span>
+          <input type="tel" pattern="[0-9]*" inputmode="numeric" maxlength="3" id="step7" placeholder="---">
+        </label>
+        <button class="primary check-btn">باز کردن قفل</button>
+        <p class="status"></p>
+      </article>
+    </section>
+  </main>
+
+  <div class="congrats" id="congrats" aria-hidden="true">
+    <div class="congrats-card">
+      <div class="sparkle">✨</div>
+      <h2>تبریک! دکتر را پیدا کردید</h2>
+      <button class="primary" id="closeCongrats">باشه</button>
+    </div>
+  </div>
+
+  <script>
+    const totalSteps = 7;
+    const state = Array(totalSteps).fill(false);
+    let currentStep = 1;
+    let customStep6Answer = 'اولاد';
+    const colorSequence = ['سبز', 'آبی', 'بنفش'];
+    const colorPick = [];
+
+    const normalize = (text = '') => text.trim()
+      .toLowerCase()
+      .replace(/ي/g, 'ی')
+      .replace(/ك/g, 'ک')
+      .replace(/ؤ/g, 'و')
+      .replace(/[\s\u200c]+/g, ' ');
+
+    const answers = {
+      1: ['کهربایی', 'کهربايي', 'amber', 'عنبر', 'کهربا'],
+      2: ['اهورامزدا', 'اهورا مزدا', 'ahura', 'ahura mazda', 'ahuramazda'],
+      3: colorSequence,
+      4: ['شاهنامه', 'شاه نامه', 'shahnameh'],
+      5: ['3331'],
+      6: () => customStep6Answer,
+      7: ['360']
+    };
+
+    const puzzles = Array.from(document.querySelectorAll('.puzzle'));
+    const dots = Array.from(document.querySelectorAll('.dot'));
+    const trail = document.getElementById('colorTrail');
+    const congrats = document.getElementById('congrats');
+    const closeCongrats = document.getElementById('closeCongrats');
+
+    function updateProgress(step) {
+      dots.forEach((dot, idx) => {
+        const number = idx + 1;
+        dot.classList.toggle('active', number === step);
+        dot.classList.toggle('done', state[idx]);
+      });
+    }
+
+    function setStatus(card, message, success = false) {
+      const status = card.querySelector('.status');
+      status.textContent = message;
+      status.classList.toggle('ok', success);
+      status.classList.toggle('error', !success);
+    }
+
+    function activateStep(step) {
+      currentStep = step;
+      puzzles.forEach(card => {
+        const cardStep = Number(card.dataset.step);
+        card.classList.toggle('active', cardStep === step);
+        card.classList.toggle('locked', cardStep > step);
+      });
+      updateProgress(step);
+    }
+
+    function scrollToStep(step) {
+      const card = puzzles.find(c => Number(c.dataset.step) === step);
+      if (!card) return;
+      card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      setTimeout(() => {
+        const input = card.querySelector('input');
+        if (input) input.focus();
+      }, 350);
+    }
+
+    function renderTrail() {
+      trail.innerHTML = '';
+      colorPick.forEach(color => {
+        const span = document.createElement('span');
+        span.textContent = color;
+        trail.appendChild(span);
+      });
+      if (!colorPick.length) {
+        trail.innerHTML = '<span class="muted">هیچ رنگی انتخاب نشده</span>';
+      }
+    }
+
+    function checkColorLock(card) {
+      if (colorPick.length !== colorSequence.length) {
+        setStatus(card, 'سه رنگ را کامل و به ترتیب انتخاب کن.', false);
+        return false;
+      }
+      const correct = colorSequence.every((c, idx) => c === colorPick[idx]);
+      setStatus(card, correct ? 'درست است، قفل رنگی باز شد.' : 'ترتیب اشتباه است. پاک کن و دوباره امتحان کن.', correct);
+      return correct;
+    }
+
+    function checkText(step, card) {
+      const input = card.querySelector('input');
+      const value = normalize(input.value);
+      const valid = answers[step];
+      const customTarget = typeof valid === 'function' ? normalize(valid()) : null;
+
+      if (typeof valid === 'function' && !customTarget) {
+        setStatus(card, 'پاسخ این مرحله هنوز تنظیم نشده.', false);
+        return false;
+      }
+
+      const target = typeof valid === 'function' ? customTarget : valid.map(normalize);
+      const correct = typeof target === 'string'
+        ? target === value
+        : target.includes(value);
+
+      setStatus(card, correct ? 'قفل باز شد.' : 'اشتباه است. دوباره دقت کن.', correct);
+      return correct;
+    }
+
+    function handleCheck(card) {
+      const step = Number(card.dataset.step);
+      if (step !== currentStep) {
+        setStatus(card, 'اول باید مراحل قبلی را حل کنی.', false);
+        return;
+      }
+
+      const isColor = step === 3;
+      const solved = isColor ? checkColorLock(card) : checkText(step, card);
+
+      if (solved) {
+        state[step - 1] = true;
+        card.classList.add('solved');
+        if (step < totalSteps) {
+          activateStep(step + 1);
+          scrollToStep(step + 1);
+        } else {
+          setStatus(card, 'تبریک! همه قفل‌ها باز شد.', true);
+          congrats.classList.add('show');
+          congrats.setAttribute('aria-hidden', 'false');
+        }
+      }
+    }
+
+    function resetGame() {
+      state.fill(false);
+      currentStep = 1;
+      colorPick.length = 0;
+      renderTrail();
+      puzzles.forEach(card => {
+        card.classList.remove('solved');
+        card.classList.remove('locked');
+        const status = card.querySelector('.status');
+        if (status) status.textContent = '';
+        const input = card.querySelector('input');
+        if (input) input.value = '';
+      });
+      activateStep(1);
+    }
+
+    // Event bindings
+    puzzles.forEach(card => {
+      const btn = card.querySelector('.check-btn');
+      if (btn) {
+        btn.addEventListener('click', () => handleCheck(card));
+      }
+      const input = card.querySelector('input');
+      if (input) {
+        input.addEventListener('keypress', e => {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            handleCheck(card);
+          }
+        });
+      }
+    });
+
+    document.querySelectorAll('.color-swatch').forEach(swatch => {
+      swatch.addEventListener('click', () => {
+        if (colorPick.length >= colorSequence.length) return;
+        colorPick.push(swatch.dataset.color);
+        renderTrail();
+      });
+    });
+
+    document.getElementById('clearColors').addEventListener('click', () => {
+      colorPick.length = 0;
+      renderTrail();
+    });
+
+    document.getElementById('restart').addEventListener('click', resetGame);
+
+    closeCongrats.addEventListener('click', () => {
+      congrats.classList.remove('show');
+      congrats.setAttribute('aria-hidden', 'true');
+    });
+
+    renderTrail();
+    activateStep(1);
+  </script>
+</body>
+</html>
